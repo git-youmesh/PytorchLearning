@@ -44,6 +44,10 @@ for epoch in range(epochs):
     loss = criterion(outputs.squeeze(), torch.tensor(labels, dtype=torch.float))
     loss.backward()
     optimizer.step()
+"""Note that the token embeddings at this point are independent of their
+context. This means that homonyms (words that have the same spelling but
+different meaning), like “Rude” , have the same
+representation"""
 
 embedding_weights = list(model[0].parameters())[0]
 print(embedding_weights.shape)
